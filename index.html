@@ -5,11 +5,16 @@
 <script>
 function aa(){
   document.getElementById('qw').innerHTML='123';
-  window.Telegram.WebApp.sendData('2345sdfgh');
+  Telegram.WebApp.sendData('2345sdfgh');
   document.getElementById('qw').innerHTML='456';
 }
 setTimeout(aa, 5000)
 
+Telegram.WebApp.MainButton.enable();
+Telegram.WebApp.onEvent('mainButtonClicked', function(){
+	Telegram.WebApp.sendData("12345678"); 
+});
+  
 </script>
 
   </head>
