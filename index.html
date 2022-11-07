@@ -5,7 +5,7 @@
 <script>
 function aa(){
   document.getElementById('qw').innerHTML='123';
-  tg.sendData('2345sdfgh');
+  window.Telegram.WebApp.sendData('2345sdfgh');
   document.getElementById('qw').innerHTML='456';
 }
 setTimeout(aa, 5000)
