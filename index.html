@@ -10,6 +10,7 @@ function aa(){
 }
 setTimeout(aa, 5000)
 
+Telegram.WebApp.MainButton.show();
 Telegram.WebApp.MainButton.enable();
 Telegram.WebApp.onEvent('mainButtonClicked', function(){
 	Telegram.WebApp.sendData("12345678"); 
