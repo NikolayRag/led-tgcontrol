@@ -7,12 +7,12 @@
 Telegram.WebApp.MainButton.show();
 Telegram.WebApp.MainButton.enable();
 Telegram.WebApp.onEvent('mainButtonClicked', function(){
-	r0 = Math.random()
-	r1 = Math.random()
-	g0 = Math.random()
-	g1 = Math.random()
-	b0 = Math.random()
-	b1 = Math.random()
+	r0 = document.getElementById('rgbR0').value;
+	r1 = document.getElementById('rgbR1').value;
+	g0 = document.getElementById('rgbG0').value;
+	g1 = document.getElementById('rgbG1').value;
+	b0 = document.getElementById('rgbB0').value;
+	b1 = document.getElementById('rgbB1').value;
 	Telegram.WebApp.sendData([r0, r1, g0, g1, b0, b1].join(' ')); 
 });
   
@@ -20,6 +20,13 @@ Telegram.WebApp.onEvent('mainButtonClicked', function(){
 
   </head>
   <body>
-    <div id='qw'>test</div>
-  </body>
+	<input id='rgbR0' type="range" min="0" max="1" step=".001" value="0"></input>
+	<input id='rgbG0' type="range" min="0" max="1" step=".001" value="0"></input>
+	<input id='rgbB0' type="range" min="0" max="1" step=".001" value="0"></input>
+
+	<input id='rgbR1' type="range" min="0" max="1" step=".001" value="1"></input>
+	<input id='rgbG1' type="range" min="0" max="1" step=".001" value="1"></input>
+	<input id='rgbB1' type="range" min="0" max="1" step=".001" value="1"></input>
+
+</body>
 </html>
