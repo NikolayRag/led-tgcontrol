@@ -1,46 +1,83 @@
+<!DOCTYPE html>
 <html>
   <head>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="iro.min.js"></script>
 <script>
 
-Telegram.WebApp.MainButton.show();
-Telegram.WebApp.MainButton.enable();
-Telegram.WebApp.onEvent('mainButtonClicked', function(){
-	r0 = document.getElementById('rgbR0').value;
-	r1 = document.getElementById('rgbR1').value;
-	g0 = document.getElementById('rgbG0').value;
-	g1 = document.getElementById('rgbG1').value;
-	b0 = document.getElementById('rgbB0').value;
-	b1 = document.getElementById('rgbB1').value;
-	Telegram.WebApp.sendData([r0, r1, g0, g1, b0, b1].join(',')); 
+function CPNew(_el, _v){
+return new iro.ColorPicker(_el, {
+  width: 150,
+  height: 10,
+  handleRadius: 8,
+  activeHandleRadius: 10,
+  handleUrl: null,
+  // handleUrl: "#test",
+  handleOrigin: {y: 0, x: 0},
+  colors: [_v],
+  borderWidth: 1,
+  borderColor: '#777',
+  wheelLightness: true,
+  layoutDirection: 'horizontal',
+  layout: [
+    {
+      component: iro.ui.Box,
+      options: {}
+    },
+    {
+      component: iro.ui.Slider,
+      options: {
+        sliderType: 'hue'
+      }
+    },
+    {
+      component: iro.ui.Slider,
+      options: {
+        sliderType: 'red'
+      }
+    },
+    {
+      component: iro.ui.Slider,
+      options: {
+        sliderType: 'green'
+      }
+    },
+    {
+      component: iro.ui.Slider,
+      options: {
+        sliderType: 'blue'
+      }
+    },
+  ]
 });
-  
+};
+
 </script>
 
   </head>
   <body>
 	<div id='title'></div>
-	<input id='rgbR0' type="range" min="0" max="1" step=".001" value="0"></input><br>
-	<input id='rgbG0' type="range" min="0" max="1" step=".001" value="0"></input><br>
-	<input id='rgbB0' type="range" min="0" max="1" step=".001" value="0"></input><br>
-<br>
-	<input id='rgbR1' type="range" min="0" max="1" step=".001" value="1"></input><br>
-	<input id='rgbG1' type="range" min="0" max="1" step=".001" value="1"></input><br>
-	<input id='rgbB1' type="range" min="0" max="1" step=".001" value="1"></input><br>
-
+	<div id='color0'></div>
+	<div id='color1'></div>
 </body>
 
 <script>
 	var inDataA = location.hash.split('?')[0].substr(1).split(',');
-	document.getElementById('rgbR0').value = inDataA[0];
-	document.getElementById('rgbR1').value = inDataA[1];
-	document.getElementById('rgbG0').value = inDataA[2];
-	document.getElementById('rgbG1').value = inDataA[3];
-	document.getElementById('rgbB0').value = inDataA[4];
-	document.getElementById('rgbB1').value = inDataA[5];
+
+	var colorPickers = [
+		CPNew('#color0', {r: inDataA[0], g: inDataA[2], b: inDataA[3]}),
+		CPNew('#color1', {r: inDataA[1], g: inDataA[3], b: inDataA[5]}),
+	];
+
 	
-	
-//	document.getElementById('title').innerHTML = inDataA;
+	Telegram.WebApp.MainButton.show();
+	Telegram.WebApp.MainButton.enable();
+	Telegram.WebApp.onEvent('mainButtonClicked', function(){
+		var rgb0 = colorPickers[0].colors[0].rgb;
+		var rgb1 = colorPickers[1].colors[0].rgb;
+		Telegram.WebApp.sendData([rgb0.r, rgb1.r, rgb0.g, rgb1.g, rgb0.b, rgb1.b].join(',')); 
+	});
+
 </script>
 </html>
