@@ -32,6 +32,15 @@ Telegram.WebApp.onEvent('mainButtonClicked', function(){
 </body>
 
 <script>
-	document.getElementById('title').innerHTML = location.hash.split('?')[0];
+	var inDataA = location.hash.split('?')[0].substr(1).split(',');
+	document.getElementById('rgbR0').value = inDataA[0];
+	document.getElementById('rgbR1').value = inDataA[2];
+	document.getElementById('rgbG0').value = inDataA[4];
+	document.getElementById('rgbG1').value = inDataA[1];
+	document.getElementById('rgbB0').value = inDataA[3];
+	document.getElementById('rgbB1').value = inDataA[5];
+	
+	
+	document.getElementById('title').innerHTML = ;
 </script>
 </html>
