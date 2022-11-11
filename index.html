@@ -13,7 +13,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function(){
 	g1 = document.getElementById('rgbG1').value;
 	b0 = document.getElementById('rgbB0').value;
 	b1 = document.getElementById('rgbB1').value;
-	Telegram.WebApp.sendData([r0, r1, g0, g1, b0, b1].join(' ')); 
+	Telegram.WebApp.sendData([r0, r1, g0, g1, b0, b1].join(',')); 
 });
   
 </script>
