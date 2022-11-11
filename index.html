@@ -32,6 +32,6 @@ Telegram.WebApp.onEvent('mainButtonClicked', function(){
 </body>
 
 <script>
-	document.getElementById('title').innerHTML = location.hash;
+	document.getElementById('title').innerHTML = location.hash.split('?')[0];
 </script>
 </html>
