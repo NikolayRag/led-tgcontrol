@@ -72,6 +72,7 @@ return new iro.ColorPicker(_el, {
 
 	
 	Telegram.WebApp.MainButton.show();
+	Telegram.WebApp.expand();
 	Telegram.WebApp.MainButton.enable();
 	Telegram.WebApp.onEvent('mainButtonClicked', function(){
 		var rgb0 = colorPickers[0].colors[0].rgb;
