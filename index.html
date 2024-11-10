@@ -77,7 +77,8 @@ return new iro.ColorPicker(_el, {
 	Telegram.WebApp.onEvent('mainButtonClicked', function(){
 		var rgb0 = colorPickers[0].colors[0].rgb;
 		var rgb1 = colorPickers[1].colors[0].rgb;
-		Telegram.WebApp.sendData([rgb0.r, rgb1.r, rgb0.g, rgb1.g, rgb0.b, rgb1.b].join(',')); 
+		cData = [rgb0.r, rgb1.r, rgb0.g, rgb1.g, rgb0.b, rgb1.b].join(',');
+		Telegram.WebApp.sendData(cData); 
 	});
 
 </script>
